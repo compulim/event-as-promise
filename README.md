@@ -1,6 +1,8 @@
 # event-as-promise
 
-Handle continuous steam of events in Promise fashion.
+[![Build Status](https://travis-ci.org/compulim/event-as-promise.svg?branch=master)](https://travis-ci.org/compulim/event-as-promise)
+
+Handle continuous stream of events in Promise fashion.
 
 There are multiple alternatives, for example, [p-event](https://npmjs.com/package/p-event) is a popular choice.
 
@@ -47,7 +49,7 @@ main();
 
 ## Redux Saga
 
-Handling event in a Promise may not reduce complexity. But it will be beneficial for `redux-saga` when mixed with `call` function.
+Handling event in a Promise may not reduce complexity. But it will be beneficial for [`redux-saga`](https://redux-saga.js.org/) when mixed with [`call`](https://redux-saga.js.org/docs/api/#callfn-args) effect.
 
 In this example, when the user is connected via `CONNECTED` action, we will keep the user posted about file changes, until a `DISCONNECTED` is received.
 
