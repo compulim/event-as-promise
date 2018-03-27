@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 
 import EventAsPromise from '.';
-import hasResolved from './hasResolved';
+import hasResolved from 'has-resolved';
 
 test('not backlogged', async () => {
   const eventAsPromise = new EventAsPromise();

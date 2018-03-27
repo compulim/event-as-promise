@@ -1,6 +1,7 @@
 import createDeferred from './createDeferred';
-import hasRejected from './hasRejected';
-import hasResolved from './hasResolved';
+import hasResolved from 'has-resolved';
+
+const { hasRejected } = hasResolved;
 
 test('resolve', async () => {
   const deferred = createDeferred();
