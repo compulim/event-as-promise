@@ -105,6 +105,39 @@ await expect(promise3).resolves.toBe(3);
 
 > Same as event listener, if `one()` is not called before the event is emitted, the event will be lost.
 
+## Upcoming
+
+Instead of futures, you can use `upcoming()` to get the Promise for the upcoming event. Futures and upcoming Promises are independent of each other, as shown in the sample below.
+
+```js
+const emitter = new EventEmitter();
+const countPromises = new EventAsPromise();
+
+emitter.on('count', countPromises.eventListener);
+
+const promiseOne1 = countPromises.upcoming();
+const promiseOne2 = countPromises.upcoming();
+const promiseOne3 = countPromises.one();
+const promiseTwo = countPromises.one();
+
+emitter.emit('count', 'one');
+emitter.emit('count', 'two');
+
+await expect(promiseOne1).resolves.toBe('one');
+await expect(promiseOne2).resolves.toBe('one');
+await expect(promiseOne3).resolves.toBe('one');
+await expect(promiseTwo).resolves.toBe('two');
+
+const promiseThree = countPromises.upcoming();
+
+emitter.emit('count', 'three');
+
+await expect(promiseOne1).resolves.toBe('one');
+await expect(promiseThree).resolves.toBe('three');
+```
+
+> Note: after the current `upcoming()` has resolved, you will need to call `upcoming()` again to obtain a new Promise for the next upcoming event.
+
 # Contributions
 
 Like us? [Star](https://github.com/compulim/event-as-promise/stargazers) us.

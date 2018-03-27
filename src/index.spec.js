@@ -84,7 +84,11 @@ test('using as iterator', async () => {
     await expect(promise).resolves.toBe(count);
     count++;
 
-    if (count > 1) { break; }
+    // Obtaining a future inside for-loop should not affect the for-loop
+    // We specifically don't emit for this future to make sure it don't affect the for-loop
+    eventAsPromise.one();
+
+    if (count > 10) { break; }
   }
 });
 
@@ -99,4 +103,31 @@ test('multiple args', async () => {
   emitter.emit('count', 'one', 'two');
 
   await expect(promise).resolves.toEqual(['one', 'two']);
+});
+
+test('upcoming', async () => {
+  const emitter = new EventEmitter();
+  const countPromises = new EventAsPromise();
+
+  emitter.on('count', countPromises.eventListener);
+
+  const promiseOne1 = countPromises.upcoming();
+  const promiseOne2 = countPromises.upcoming();
+  const promiseOne3 = countPromises.one();
+  const promiseTwo = countPromises.one();
+
+  emitter.emit('count', 'one');
+  emitter.emit('count', 'two');
+
+  await expect(promiseOne1).resolves.toBe('one');
+  await expect(promiseOne2).resolves.toBe('one');
+  await expect(promiseOne3).resolves.toBe('one');
+  await expect(promiseTwo).resolves.toBe('two');
+
+  const promiseThree = countPromises.upcoming();
+
+  emitter.emit('count', 'three');
+
+  await expect(promiseOne1).resolves.toBe('one');
+  await expect(promiseThree).resolves.toBe('three');
 });

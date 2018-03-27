@@ -3,6 +3,7 @@ import createDeferred from './createDeferred';
 export default class EventAsPromise {
   constructor(options = {}) {
     this.defers = [];
+    this.upcomingDeferred = null;
     this.eventListener = this.eventListener.bind(this);
     this.options = options;
 
@@ -11,7 +12,7 @@ export default class EventAsPromise {
     this[Symbol.iterator] = () => ({
       next: () => ({
         done: false,
-        value: this.one()
+        value: this.upcoming()
       })
     });
   }
@@ -21,6 +22,11 @@ export default class EventAsPromise {
     const args = this.options.array ? [].slice.call(arguments) : event;
 
     deferred && deferred.resolve(args);
+
+    if (this.upcomingDeferred) {
+      this.upcomingDeferred.resolve(args);
+      this.upcomingDeferred = null;
+    }
   }
 
   one() {
@@ -29,5 +35,13 @@ export default class EventAsPromise {
     this.defers.push(deferred);
 
     return deferred.promise;
+  }
+
+  upcoming() {
+    if (!this.upcomingDeferred) {
+      this.upcomingDeferred = createDeferred();
+    }
+
+    return this.upcomingDeferred.promise;
   }
 }
