@@ -1,8 +1,8 @@
 # event-as-promise
 
-[![Build Status](https://travis-ci.org/compulim/event-as-promise.svg?branch=master)](https://travis-ci.org/compulim/event-as-promise)
-
 Handle continuous stream of events in Promise fashion.
+
+[![Build Status](https://travis-ci.org/compulim/event-as-promise.svg?branch=master)](https://travis-ci.org/compulim/event-as-promise)
 
 There are multiple alternatives, for example, [p-event](https://npmjs.com/package/p-event) is a popular choice.
 
