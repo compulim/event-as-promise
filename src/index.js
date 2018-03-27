@@ -8,6 +8,7 @@ export default class EventAsPromise {
     this.options = options;
 
     this.one = this.one.bind(this);
+    this.upcoming = this.upcoming.bind(this);
 
     this[Symbol.iterator] = () => ({
       next: () => ({

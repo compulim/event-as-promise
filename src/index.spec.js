@@ -112,9 +112,9 @@ test('upcoming', async () => {
   emitter.on('count', countPromises.eventListener);
 
   const promiseOne1 = countPromises.upcoming();
-  const promiseOne2 = countPromises.upcoming();
+  const promiseOne2 = countPromises.upcoming.call(null);
   const promiseOne3 = countPromises.one();
-  const promiseTwo = countPromises.one();
+  const promiseTwo = countPromises.one.call(null);
 
   emitter.emit('count', 'one');
   emitter.emit('count', 'two');
