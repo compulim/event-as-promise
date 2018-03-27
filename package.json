@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/compulim/event-as-promise#readme",
   "jest": {
+    "collectCoverage": true,
     "testRegex": "(/examples/.*|/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$"
   },
   "devDependencies": {
