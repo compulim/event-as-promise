@@ -3,6 +3,6 @@ export default function hasResolved(promise) {
 
   return Promise.race([
     promise,
-    new Promise((resolve, reject) => setTimeout(() => resolve(symbol)))
+    new Promise((resolve, reject) => setImmediate(() => resolve(symbol)))
   ]).then(result => result !== symbol, () => false);
 }

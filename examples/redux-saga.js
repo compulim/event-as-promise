@@ -17,7 +17,7 @@ function setup() {
 test('call', async () => {
   const { emitter, saga, store } = setup();
 
-  setTimeout(() => emitter.emit('count', 1));
+  setImmediate(() => emitter.emit('count', 1));
 
   await new Promise(resolve => {
     saga.run(function* () {
