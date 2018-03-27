@@ -1,4 +1,4 @@
-import EventAsPromise from '..';
+import EventAsPromise from '../src';
 import fetch from 'node-fetch';
 import getPort from 'get-port';
 import http from 'http';

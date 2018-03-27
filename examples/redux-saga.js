@@ -4,7 +4,7 @@ import { EventEmitter } from 'events';
 import createSagaMiddleware from 'redux-saga';
 
 import createDeferred from '../src/createDeferred';
-import EventAsPromise from '..';
+import EventAsPromise from '../src';
 
 function setup() {
   const emitter = new EventEmitter();
