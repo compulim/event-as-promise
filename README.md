@@ -15,7 +15,7 @@ Instead of listen to event *just once*, `event-as-promise` chose an approach to 
 This sample code is converted from [Node about page](https://nodejs.org/en/about/).
 
 ```js
-import EventAsPromise from '..';
+import EventAsPromise from 'event-as-promise';
 import http from 'http';
 
 async function main(ready) {
