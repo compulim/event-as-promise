@@ -1,12 +1,12 @@
 # event-as-promise
 
-Handle continuous stream of events in Promise fashion.
+Handle continuous stream of events with Promise and generator function.
 
 [![Build Status](https://travis-ci.org/compulim/event-as-promise.svg?branch=master)](https://travis-ci.org/compulim/event-as-promise)
 
 There are multiple alternatives, for example, [p-event](https://npmjs.com/package/p-event) is a popular choice.
 
-Instead of listen to event *just once*, `event-as-promise` chose an approach to allow listening to the same event continuously. And we use `generator` function to enable `for(of)` loop to handle event indefinitely.
+Instead of listen to event *just once*, `event-as-promise` chose an approach to allow listening to the same event continuously. And we use *generator function* to enable `for(of)` loop to handle event indefinitely.
 
 # How to use
 
@@ -105,7 +105,7 @@ await expect(promise3).resolves.toBe(3);
 
 > Same as event listener, if `one()` is not called before the event is emitted, the event will be lost.
 
-## Upcoming
+## Upcomings
 
 Instead of futures, you can use `upcoming()` to get the Promise for the upcoming event. Futures and upcoming Promises are independent of each other, as shown in the sample below.
 
