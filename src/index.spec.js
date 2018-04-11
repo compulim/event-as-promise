@@ -3,7 +3,7 @@ import { EventEmitter } from 'events';
 import EventAsPromise from '.';
 import hasResolved from 'has-resolved';
 
-test('not backlogged', async () => {
+test('one', async () => {
   const eventAsPromise = new EventAsPromise();
   const emitter = new EventEmitter();
 
@@ -11,27 +11,30 @@ test('not backlogged', async () => {
 
   const promise = eventAsPromise.one();
 
-  expect(await hasResolved(promise)).toBeFalsy();
+  await expect(hasResolved(promise)).resolves.toBeFalsy();
 
   emitter.emit('hello', 'World!');
 
   await expect(promise).resolves.toBe('World!');
 });
 
-test('backlogged', async () => {
+test('no backlog', async () => {
   const eventAsPromise = new EventAsPromise();
   const emitter = new EventEmitter();
 
   emitter.on('count', eventAsPromise.eventListener);
   emitter.emit('count', 1);
 
-  const promise = eventAsPromise.one();
+  const onePromise = eventAsPromise.one();
+  const upcomingPromise = eventAsPromise.upcoming();
 
   emitter.emit('count', 2);
 
-  expect(await hasResolved(promise)).toBeTruthy();
+  await expect(hasResolved(onePromise)).resolves.toBeTruthy();
+  await expect(onePromise).resolves.toBe(2);
 
-  await expect(promise).resolves.toBe(2);
+  await expect(hasResolved(upcomingPromise)).resolves.toBeTruthy();
+  await expect(upcomingPromise).resolves.toBe(2);
 });
 
 test('repeated', async () => {
