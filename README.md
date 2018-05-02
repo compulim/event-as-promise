@@ -2,7 +2,7 @@
 
 Handle continuous stream of events with Promise and generator function.
 
-[![Build Status](https://travis-ci.org/compulim/event-as-promise.svg?branch=master)](https://travis-ci.org/compulim/event-as-promise)
+[![npm version](https://badge.fury.io/js/event-as-promise.svg)](https://badge.fury.io/js/event-as-promise) [![Build Status](https://travis-ci.org/compulim/event-as-promise.svg?branch=master)](https://travis-ci.org/compulim/event-as-promise)
 
 There are multiple alternatives, for example, [p-event](https://npmjs.com/package/p-event) is a popular choice.
 
