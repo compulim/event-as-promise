@@ -1,9 +1,8 @@
 {
   "presets": [
     ["env", {
-      "targets": {
-        "node": "9"
-      }
+      "forceAllTransforms": true,
+      "modules": "commonjs"
     }],
     "stage-3"
   ]

@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.0.3] - 2018-06-28
+### Fixes
+- fix: uglify in create-react-app failed because not ES5-compliant
+
 ## [1.0.2] - 2018-03-27
 ### Fixes
 - fix: bound `upcoming()`
