@@ -1,4 +1,4 @@
-import createDeferred from './createDeferred';
+import createDeferred from 'p-defer';
 
 export default class EventAsPromise {
   constructor(options = {}) {

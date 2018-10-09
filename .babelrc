@@ -1,9 +1,13 @@
 {
+  "plugins": [
+    "@babel/plugin-proposal-object-rest-spread",
+    ["babel-plugin-add-module-exports",
+      { "addDefaultProperty": true }
+    ]
+  ],
   "presets": [
-    ["env", {
-      "forceAllTransforms": true,
-      "modules": "commonjs"
-    }],
-    "stage-3"
+    ["@babel/preset-env",
+      { "forceAllTransforms": true }
+    ]
   ]
 }

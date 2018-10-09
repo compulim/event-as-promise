@@ -1,7 +1,8 @@
-import EventAsPromise from '../src';
 import fetch from 'node-fetch';
 import getPort from 'get-port';
 import http from 'http';
+
+import EventAsPromise from '../src';
 
 async function main(ready) {
   const port = await getPort();
