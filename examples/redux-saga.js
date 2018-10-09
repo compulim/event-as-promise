@@ -1,9 +1,8 @@
 import { applyMiddleware, createStore } from 'redux';
-import { call, take } from 'redux-saga/effects';
+import { call } from 'redux-saga/effects';
 import { EventEmitter } from 'events';
 import createSagaMiddleware from 'redux-saga';
 
-import createDeferred from '../src/createDeferred';
 import EventAsPromise from '../src';
 
 function setup() {
