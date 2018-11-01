@@ -48,8 +48,5 @@
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
     "rimraf": "^2.6.2"
-  },
-  "dependencies": {
-    "p-defer": "^1.0.0"
   }
 }

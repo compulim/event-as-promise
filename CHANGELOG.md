@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Updated to `@babel/core@7.1.2` and `jest@23.6.0`
 - Use `p-defer` for deferred implementation
+   - Instead of importing `p-defer` package, we copied the code in
+      - `p-defer` package published to NPM is not ES5-compliant
+      - Non ES5-compliant package will fail build for `create-react-app@1`
 
 ## [1.0.3] - 2018-06-28
 ### Fixed
