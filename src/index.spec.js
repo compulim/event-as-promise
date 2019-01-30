@@ -37,6 +37,29 @@ test('no backlog', async () => {
   await expect(upcomingPromise).resolves.toBe(2);
 });
 
+test('with backlog', async () => {
+  const eventAsPromise = new EventAsPromise({ queue: true });
+  const emitter = new EventEmitter();
+
+  emitter.on('count', eventAsPromise.eventListener);
+  emitter.emit('count', 1);
+
+  const promise1 = eventAsPromise.one();
+  const promise2 = eventAsPromise.one();
+  const upcomingPromise = eventAsPromise.upcoming();
+
+  emitter.emit('count', 2);
+
+  await expect(hasResolved(promise1)).resolves.toBeTruthy();
+  await expect(promise1).resolves.toBe(1);
+
+  await expect(hasResolved(promise2)).resolves.toBeTruthy();
+  await expect(promise2).resolves.toBe(2);
+
+  await expect(hasResolved(upcomingPromise)).resolves.toBeTruthy();
+  await expect(upcomingPromise).resolves.toBe(2);
+});
+
 test('repeated', async () => {
   const eventAsPromise = new EventAsPromise();
   const emitter = new EventEmitter();
