@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import { applyMiddleware, createStore } from 'redux';
 import { call } from 'redux-saga/effects';
 import { EventEmitter } from 'events';

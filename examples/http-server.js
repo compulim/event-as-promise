@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import fetch from 'node-fetch';
 import getPort from 'get-port';
 import http from 'http';
