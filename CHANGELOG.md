@@ -5,6 +5,21 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Bump dependencies, in PR [#5](https://github.com/compulim/event-as-promise/pull/5)
+   - [@babel/cli@^7.5.5](https://www.npmjs.com/package/@babel/cli)
+   - [@babel/core@^7.5.5](https://www.npmjs.com/package/@babel/core)
+   - [@babel/plugin-proposal-object-rest-spread@^7.5.5](https://www.npmjs.com/package/@babel/plugin-proposal-object-rest-spread)
+   - [@babel/preset-env@^7.5.5](https://www.npmjs.com/package/@babel/preset-env)
+   - [babel-plugin-add-module-exports@^1.0.2](https://www.npmjs.com/package/babel-plugin-add-module-exports)
+   - [get-port@^5.0.0](https://www.npmjs.com/package/get-port)
+   - [has-resolved@^1.1.0](https://www.npmjs.com/package/has-resolved)
+   - [jest@^24.8.0](https://www.npmjs.com/package/jest)
+   - [node-dev@^4.0.0](https://www.npmjs.com/package/node-dev)
+   - [node-fetch@^2.6.0](https://www.npmjs.com/package/node-fetch)
+   - [redux@^4.0.4](https://www.npmjs.com/package/redux)
+   - [redux-saga@^1.0.5](https://www.npmjs.com/package/redux-saga)
+   - [rimraf@^2.6.3](https://www.npmjs.com/package/rimraf)
 
 ## [1.0.5] - 2018-10-31
 ### Changed

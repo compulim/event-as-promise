@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import { EventEmitter } from 'events';
 
 import EventAsPromise from '.';
