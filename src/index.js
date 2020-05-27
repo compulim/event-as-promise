@@ -2,6 +2,7 @@ import createDeferred from './external/p-defer';
 
 export default class EventAsPromise {
   constructor(options = {}) {
+    this.queue = [];
     this.defers = [];
     this.upcomingDeferred = null;
     this.eventListener = this.eventListener.bind(this);
@@ -22,7 +23,13 @@ export default class EventAsPromise {
     const deferred = this.defers.shift();
     const args = this.options.array ? [].slice.call(arguments) : event;
 
-    deferred && deferred.resolve(args);
+    if (deferred) {
+      deferred.resolve(args);
+    } else if (this.options.queue) {
+      const newDeferred = createDeferred();
+      newDeferred.resolve(args);
+      this.queue.push(newDeferred.promise);
+    }
 
     if (this.upcomingDeferred) {
       this.upcomingDeferred.resolve(args);
@@ -31,6 +38,10 @@ export default class EventAsPromise {
   }
 
   one() {
+    if (this.options.queue && this.queue.length > 0) {
+      return this.queue.shift();
+    }
+
     const deferred = createDeferred();
 
     this.defers.push(deferred);
