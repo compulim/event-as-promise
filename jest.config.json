@@ -1,3 +1,0 @@
-{
-  "testRegex": "(/examples/.*|/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$"
-}
