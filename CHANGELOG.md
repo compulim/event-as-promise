@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Moved to new scaffold, added CJS/ESM exports
+- Moved default imports to named imports
+   - `import { EventAsPromise } from 'event-as-promise'`
+- Removed `options: { array: boolean }`, to receive all arguments from Node.js event emitter
+   - `target.on((...args) => eventAsPromise.eventListener(args))`
+
 ## [1.1.0] - 2020-05-25
 
 ### Changed
