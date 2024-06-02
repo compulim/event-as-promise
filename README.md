@@ -2,11 +2,39 @@
 
 Handle continuous stream of events with Promise and generator function.
 
-[![npm version](https://badge.fury.io/js/event-as-promise.svg)](https://badge.fury.io/js/event-as-promise) [![Build Status](https://travis-ci.org/compulim/event-as-promise.svg?branch=master)](https://travis-ci.org/compulim/event-as-promise)
+[![npm version](https://badge.fury.io/js/event-as-promise.svg)](https://npmjs.com/package/event-as-promise)
 
-There are multiple alternatives, for example, [p-event](https://npmjs.com/package/p-event) is a popular choice.
+Instead of listen to event *just once*, `event-as-promise` chose an approach to allow listening to the same event continuously. And we support *generator function* to enable `for await (const data of eventAsPromise)` loop to handle event indefinitely.
 
-Instead of listen to event *just once*, `event-as-promise` chose an approach to allow listening to the same event continuously. And we use *generator function* to enable `for(of)` loop to handle event indefinitely.
+# Breaking changes
+
+## 2.0.0
+
+We moved default imports to named imports:
+
+```diff
+- import EventAsPromise from 'event-as-promise';
++ import { EventAsPromise } from 'event-as-promise';
+```
+
+We removed `options: { array: boolean }`, to receive all arguments from Node.js event emitter:
+
+```diff
+- target.on(eventAsPromise.eventListener);
++ target.on((...args) => eventAsPromise.eventListener(args));
+```
+
+Only `eventListener` is bound to the instance of `EventAsPromise`. Other functions (`one` and `upcoming`) are not bound and will need to be call in the context of `EventAsPromise`. If you want to call it bound:
+
+```diff
+  const eventAsPromise = new EventAsPromise();
+- const one = eventAsPromise.one;
++ const one = eventAsPromise.one.bind(eventAsPromise)
+
+  button.addEventListener('click', eventAsPromise.eventListener);
+
+  await one();
+```
 
 # How to use
 
@@ -15,17 +43,17 @@ Instead of listen to event *just once*, `event-as-promise` chose an approach to 
 This sample code is converted from [Node about page](https://nodejs.org/en/about/).
 
 ```js
-import EventAsPromise from 'event-as-promise';
+import { EventAsPromise } from 'event-as-promise';
 import http from 'http';
 
 async function main(ready) {
   const server = http.createServer();
   const listeningPromises = new EventAsPromise();
-  const requestPromises = new EventAsPromise({ array: true });
+  const requestPromises = new EventAsPromise();
 
   server
     .once('listening', listeningPromises.eventListener)
-    .on('request', requestPromises.eventListener)
+    .on('request', (...args) => requestPromises.eventListener(args))
     .listen(3000);
 
   // Wait for "listening"
@@ -45,8 +73,6 @@ async function main(ready) {
 main();
 ```
 
-> Note: as multiple results is not supported by Promise, the `array` option will group multiple event arguments into an array. By default, it is `false`.
-
 ## Redux Saga
 
 Handling event in a Promise may not reduce complexity. But it will be beneficial for [`redux-saga`](https://redux-saga.js.org/) when mixed with [`call`](https://redux-saga.js.org/docs/api/#callfn-args) effect.
@@ -57,12 +83,12 @@ In this example, when the user is connected via `CONNECTED` action, we will keep
 saga.run(function* () {
   yield takeLatest('CONNECTED', function* (action) {
     const watcher = fs.watch(action.payload);
-    const changePromises = new EventAsPromise({ array: true });
+    const changePromises = new EventAsPromise();
 
     watcher.on('change', changePromises.eventListener);
 
     for (;;) {
-      const [changes] = yield race([
+      const changes = yield race([
         call(changePromises.one),
         take('DISCONNECTED'),
       ]);
