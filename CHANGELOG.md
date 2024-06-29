@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
    - `import { EventAsPromise } from 'event-as-promise'`
 - Removed `options: { array: boolean }`, to receive all arguments from Node.js event emitter
    - `target.on((...args) => eventAsPromise.eventListener(args))`
-- Integration tests ported to mocha for better test conclusiveness, in PR [#XXX](https://github.com/compulim/event-as-promise/pull/XXX)
+- Integration tests ported to mocha for better test conclusiveness, in PR [#33](https://github.com/compulim/event-as-promise/pull/33)
 
 ## [1.1.0] - 2020-05-25
 
