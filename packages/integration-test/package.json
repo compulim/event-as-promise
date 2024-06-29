@@ -10,7 +10,7 @@
     "bump:prod": "PACKAGES_TO_BUMP=$(cat package.json | jq -r '(.pinDependencies // {}) as $P | (.localPeerDependencies // {}) as $L | (.dependencies // {}) | to_entries | map(select(.key as $K | $L | has($K) | not)) | map(.key + \"@\" + ($P[.key] // [\"latest\"])[0]) | join(\" \")') && [ ! -z \"$PACKAGES_TO_BUMP\" ] && npm install $PACKAGES_TO_BUMP || true",
     "precommit": "eslint --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts ./",
     "switch": "cat package.json | jq --arg SWITCH_NAME $SWITCH_NAME -r '(.[\"switch:\" + $SWITCH_NAME] // {}) as $TEMPLATE | .devDependencies += ($TEMPLATE.devDependencies // {}) | .dependencies += ($TEMPLATE.dependencies // {})' | tee ./package.json.tmp && mv ./package.json.tmp ./package.json",
-    "test": "jest"
+    "test": "mocha"
   },
   "author": "William Wong (https://github.com/compulim)",
   "license": "MIT",
@@ -18,11 +18,9 @@
     "event-as-promise": "^0.0.0-0"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.24.6",
-    "@babel/preset-react": "^7.24.6",
-    "@types/jest": "^29.5.12",
     "@types/node": "^20.14.0",
-    "jest": "^29.7.0"
+    "expect": "^29.7.0",
+    "mocha": "^10.5.2"
   },
   "dependencies": {
     "event-as-promise": "^0.0.0-0"
