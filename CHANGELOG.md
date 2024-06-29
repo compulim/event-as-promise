@@ -15,6 +15,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Removed `options: { array: boolean }`, to receive all arguments from Node.js event emitter
    - `target.on((...args) => eventAsPromise.eventListener(args))`
 - Integration tests ported to mocha for better test conclusiveness, in PR [#33](https://github.com/compulim/event-as-promise/pull/33)
+- Bumped dependencies, in PR [#34](https://github.com/compulim/event-as-promise/pull/34)
+   - Development dependencies
+      - [`@babel/preset-env@7.24.7`](https://npmjs.com/package/@babel/preset-env/v/7.24.7)
+      - [`@babel/preset-typescript@7.24.7`](https://npmjs.com/package/@babel/preset-typescript/v/7.24.7)
+      - [`@types/node@20.14.9`](https://npmjs.com/package/@types/node/v/20.14.9)
+      - [`esbuild@0.21.5`](https://npmjs.com/package/esbuild/v/0.21.5)
+      - [`prettier@3.3.2`](https://npmjs.com/package/prettier/v/3.3.2)
+      - [`tsup@8.1.0`](https://npmjs.com/package/tsup/v/8.1.0)
+      - [`typescript@5.5.2`](https://npmjs.com/package/typescript/v/5.5.2)
 
 ## [1.1.0] - 2020-05-25
 
