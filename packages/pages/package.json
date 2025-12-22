@@ -18,7 +18,7 @@
   "author": "William Wong (https://github.com/compulim)",
   "license": "MIT",
   "localPeerDependencies": {
-    "event-as-promise": "^0.0.0-0"
+    "event-as-promise": "0.0.0-0"
   },
   "pinDependencies": {
     "@types/react": [
@@ -35,14 +35,14 @@
     ]
   },
   "devDependencies": {
-    "@tsconfig/strictest": "^2.0.5",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "esbuild": "^0.21.5",
-    "typescript": "^5.5.2"
+    "@tsconfig/strictest": "^2.0.8",
+    "@types/react": "^18.3.27",
+    "@types/react-dom": "^18.3.7",
+    "esbuild": "^0.27.2",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
-    "event-as-promise": "^0.0.0-0",
+    "event-as-promise": "0.0.0-0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "use-ref-from": "^0.1.0"

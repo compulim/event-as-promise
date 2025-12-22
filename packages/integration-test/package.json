@@ -18,18 +18,18 @@
   "author": "William Wong (https://github.com/compulim)",
   "license": "MIT",
   "localPeerDependencies": {
-    "event-as-promise": "^0.0.0-0"
+    "event-as-promise": "0.0.0-0"
   },
   "devDependencies": {
     "@happy-dom/global-registrator": "^20.0.11",
     "@happy-dom/jest-environment": "^20.0.11",
     "@testduet/wait-for": "^0.1.1",
-    "@tsconfig/strictest": "^2.0.5",
-    "@types/node": "^20.14.9",
-    "expect": "^29.7.0",
-    "mocha": "^10.5.2"
+    "@tsconfig/strictest": "^2.0.8",
+    "@types/node": "^25.0.3",
+    "expect": "^30.2.0",
+    "mocha": "^11.7.5"
   },
   "dependencies": {
-    "event-as-promise": "^0.0.0-0"
+    "event-as-promise": "0.0.0-0"
   }
 }
