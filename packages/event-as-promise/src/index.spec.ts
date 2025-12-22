@@ -1,3 +1,4 @@
+import { beforeEach, describe, expect, test } from '@jest/globals';
 import { EventEmitter } from 'events';
 
 import { EventAsPromise } from './index';
