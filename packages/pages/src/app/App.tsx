@@ -1,5 +1,5 @@
 import { EventAsPromise } from 'event-as-promise';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 const App = () => {
   const [resolved, setResolved] = useState(false);
@@ -23,7 +23,7 @@ const App = () => {
 
   useEffect(() => {
     buttonRef.current?.addEventListener('click', eventAsPromise.eventListener);
-  }, [buttonRef]);
+  }, [buttonRef, eventAsPromise.eventListener]);
 
   return (
     <div>
