@@ -18,10 +18,10 @@
     "event-as-promise": "^0.0.0-0"
   },
   "devDependencies": {
-    "@tsconfig/strictest": "^2.0.5",
-    "@types/node": "^20.14.9",
-    "expect": "^29.7.0",
-    "mocha": "^10.5.2"
+    "@tsconfig/strictest": "^2.0.8",
+    "@types/node": "^25.0.3",
+    "expect": "^30.2.0",
+    "mocha": "^11.7.5"
   },
   "dependencies": {
     "event-as-promise": "^0.0.0-0"
