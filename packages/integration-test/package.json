@@ -21,6 +21,7 @@
     "event-as-promise": "^0.0.0-0"
   },
   "devDependencies": {
+    "@testduet/wait-for": "^0.1.1",
     "@tsconfig/strictest": "^2.0.8",
     "@types/node": "^25.0.3",
     "expect": "^30.2.0",
