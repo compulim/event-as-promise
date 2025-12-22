@@ -20,6 +20,7 @@ export class EventAsPromise<T> {
     this.#eventListener = (event: T) => {
       const deferred = this.#orderedResolvers.shift();
 
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       deferred && deferred.resolve(event);
 
       if (this.#upcomingResolvers) {
