@@ -1,10 +1,9 @@
 extends:
   - plugin:react/recommended
-  - plugin:react/jsx-runtime
+  - plugin:react-hooks/recommended
 plugins:
   - react
-# rules:
-#   react/react-in-jsx-scope: off
+  - react-hooks
 settings:
   react:
     version: 18.3.1
