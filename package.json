@@ -6,10 +6,10 @@
   "author": "William Wong (https://github.com/compulim)",
   "license": "MIT",
   "workspaces": [
-    "packages/test-harness",
     "packages/event-as-promise",
     "packages/integration-test",
-    "packages/pages"
+    "packages/pages",
+    "packages/test-harness"
   ],
   "scripts": {
     "build": "npm run build --if-present --workspaces",
