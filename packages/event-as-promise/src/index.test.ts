@@ -1,13 +1,14 @@
-import { beforeEach, describe, expect, test } from '@jest/globals';
+import { describeEach } from '@compulim/test-harness/describeEach';
 import { EventEmitter } from 'events';
-
-import { EventAsPromise } from './index';
+import { expect } from 'expect';
+import { beforeEach, test } from 'node:test';
+import { EventAsPromise } from './index.ts';
 
 async function hasResolved(promise: Promise<unknown>): Promise<boolean> {
   return Promise.race([promise.then(() => true), new Promise<false>(resolve => setTimeout(() => resolve(false), 0))]);
 }
 
-describe.each([['dom'], ['node']])('%s event mechanism', type => {
+describeEach([['dom'], ['node']])('%s event mechanism', type => {
   let eventAsPromise: EventAsPromise<unknown>;
   let addEventListener: (name: string, transform?: (...args: []) => []) => void;
   let dispatchEvent: (name: string, event?: undefined | unknown, ...extra: unknown[]) => void;

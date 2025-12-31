@@ -1,5 +1,6 @@
-const { expect } = require('expect');
-const { EventAsPromise } = require('event-as-promise');
+import { EventAsPromise } from 'event-as-promise';
+import { expect } from 'expect';
+import { describe, it } from 'node:test';
 
 describe('simple scenario', () => {
   it('should work', async () => {
