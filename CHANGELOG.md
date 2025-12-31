@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- 👷🏻 Test framework moved from Jest to Node.js test runner, by [@compulim](https://github.com/compulim) in PR [#XXX](https://github.com/compulim/event-as-promise/pull/XXX)
+- 👷🏻 Test framework moved from Jest to Node.js test runner, by [@compulim](https://github.com/compulim) in PR [#45](https://github.com/compulim/event-as-promise/pull/45)
 
 ## [2.0.1] - 2025-12-22
 
